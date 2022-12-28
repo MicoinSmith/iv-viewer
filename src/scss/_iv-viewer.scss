@@ -23,16 +23,18 @@
 
     &-fullscreen-close {
         position: absolute;
-        width: $iv-close-icon-size;
-        height: $iv-close-icon-size;
-        right: calc($iv-boundary-space / 2);
-        top: calc($iv-boundary-space / 2);
-        padding: calc($iv-boundary-space / 2);
+        width: $iv-close-icon-close-size;
+        height: $iv-close-icon-close-size;
+        right: calc(#{$iv-boundary-space} / 2);
+        top: calc(#{$iv-boundary-space} / 2);
+        padding: calc(#{$iv-boundary-space} / 2);
         cursor: pointer;
         text-align: center;
         overflow: hidden;
         text-shadow: $iv-fullscreen-close-text-shadow;
         transition: all ease 200ms;
+        background-color: rgba($iv-dark-gray, 0.7);
+        border-radius: 50%;
 
         &:after,
         &:before {

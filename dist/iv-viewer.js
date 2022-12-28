@@ -1,5 +1,5 @@
 /**
- * iv-viewer - 2.1.1
+ * @xxsy/iv-viewer - 2.1.2
  * Author : Sudhanshu Yadav
  * Copyright (c) 2019, 2022 to Sudhanshu Yadav, released under the MIT license.
  * git+https://github.com/s-yadav/iv-viewer.git
