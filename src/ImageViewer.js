@@ -973,6 +973,7 @@ ImageViewer.defaults = {
   zoomStep: 50,
   listeners: {
     onInit: null,
+    onHide: null,
     onDestroy: null,
     onImageLoaded: null,
     onZoomChange: null,

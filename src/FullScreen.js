@@ -56,6 +56,10 @@ class FullScreenViewer extends ImageViewer {
 
     // remove window event
     this._events.onWindowResize();
+
+    if (this._listeners.onHide) {
+      this._listeners.onHide();
+    }
   }
   destroy () {
     const { fullScreen } = this._elements;

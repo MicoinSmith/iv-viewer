@@ -1,6 +1,6 @@
 {
-  "name": "iv-viewer",
-  "version": "2.1.1",
+  "name": "@xxsy/iv-viewer",
+  "version": "2.1.2",
   "description": "A zooming and panning plugin inspired by google photos for your web images.",
   "main": "lib/index.js",
   "repository": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/s-yadav/iv-viewer#readme",
   "scripts": {
-    "start": "yarn copy-assets & parcel example/index.html --out-dir temp",
+    "dev": "yarn copy-assets & parcel example/index.html --out-dir temp",
     "copy-assets": "cp -R example/ temp",
     "bundle": "cross-env yarn compile & yarn build-css & yarn bundle-dist",
     "bundle-dist": "cross-env rollup -c rollup.config.js",
@@ -34,6 +34,8 @@
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^3.0.0 || ^4.0.0 || ^5.0.0-0",
     "all-contributors-cli": "^6.9.1",
     "babel-eslint": "^9.0.0",
     "cross-env": "^5.2.0",

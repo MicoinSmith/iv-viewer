@@ -1,7 +1,7 @@
 /**
  * iv-viewer - 2.1.1
  * Author : Sudhanshu Yadav
- * Copyright (c) 2019, 2021 to Sudhanshu Yadav, released under the MIT license.
+ * Copyright (c) 2019, 2022 to Sudhanshu Yadav, released under the MIT license.
  * git+https://github.com/s-yadav/iv-viewer.git
  */
 
@@ -1381,6 +1381,7 @@ ImageViewer.defaults = {
   zoomStep: 50,
   listeners: {
     onInit: null,
+    onHide: null,
     onDestroy: null,
     onImageLoaded: null,
     onZoomChange: null
@@ -1422,6 +1423,10 @@ function (_ImageViewer) {
       removeCss(document.querySelector('html'), 'overflow'); // remove window event
 
       _this._events.onWindowResize();
+
+      if (_this._listeners.onHide) {
+        _this._listeners.onHide();
+      }
     });
 
     _this._elements.fullScreen = fullScreenElem;
