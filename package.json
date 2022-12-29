@@ -1,6 +1,6 @@
 {
   "name": "@xxsy/iv-viewer",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "A zooming and panning plugin inspired by google photos for your web images.",
   "main": "lib/index.js",
   "repository": {

@@ -640,11 +640,14 @@ class ImageViewer {
       this.resetZoom();
     };
 
-    if (imageLoaded(image)) {
-      onImageLoad();
-    } else {
-      this._events.imageLoad = assignEvent(image, 'load', onImageLoad);
-    }
+    // settime for wait image if load
+    setTimeout(() => {
+      if (imageLoaded(image)) {
+        onImageLoad();
+      } else {
+        this._events.imageLoad = assignEvent(image, 'load', onImageLoad);
+      }
+    }, 0);
   }
 
   _loadHighResImage (hiResImageSrc) {
