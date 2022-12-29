@@ -1,5 +1,5 @@
 /**
- * @xxsy/iv-viewer - 2.1.4
+ * @xxsy/iv-viewer - 2.1.6
  * Author : Sudhanshu Yadav
  * Copyright (c) 2019, 2022 to Sudhanshu Yadav, released under the MIT license.
  * git+https://github.com/s-yadav/iv-viewer.git
@@ -1193,11 +1193,15 @@
           // reset the zoom
           _this9.resetZoom();
         };
-        if (imageLoaded(image)) {
-          onImageLoad();
-        } else {
-          this._events.imageLoad = assignEvent(image, 'load', onImageLoad);
-        }
+
+        // settime for wait image if load
+        setTimeout(function () {
+          if (imageLoaded(image)) {
+            onImageLoad();
+          } else {
+            _this9._events.imageLoad = assignEvent(image, 'load', onImageLoad);
+          }
+        }, 0);
       }
     }, {
       key: "_loadHighResImage",
