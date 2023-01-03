@@ -1,7 +1,7 @@
 /**
- * @xxsy/iv-viewer - 2.1.6
+ * @xxsy/iv-viewer - 2.1.7
  * Author : Sudhanshu Yadav
- * Copyright (c) 2019, 2022 to Sudhanshu Yadav, released under the MIT license.
+ * Copyright (c) 2019, 2023 to Sudhanshu Yadav, released under the MIT license.
  * git+https://github.com/s-yadav/iv-viewer.git
  */
 
@@ -385,10 +385,10 @@ var Slider = /*#__PURE__*/function () {
       document.addEventListener(_this.touchMoveEvent, moveHandler);
       document.addEventListener(_this.touchEndEvent, endHandler);
       /*
-        add end handler in context menu as well.
-        As mouseup event is not trigger on context menu open
-        https://bugs.chromium.org/p/chromium/issues/detail?id=506801
-      */
+         add end handler in context menu as well.
+         As mouseup event is not trigger on context menu open
+         https://bugs.chromium.org/p/chromium/issues/detail?id=506801
+       */
       document.addEventListener('contextmenu', endHandler);
     });
     _defineProperty(this, "moveHandler", function (eMove) {
@@ -649,7 +649,7 @@ var ImageViewer = /*#__PURE__*/function () {
   }, {
     key: "imageViewHtml",
     get: function get() {
-      return "\n    <div class=\"iv-loader\"></div>\n    <div class=\"iv-snap-view\">\n      <div class=\"iv-snap-image-wrap\">\n        <div class=\"iv-snap-handle\"></div>\n      </div>\n      <div class=\"iv-zoom-actions ".concat(this._options.hasZoomButtons ? 'iv-zoom-actions--has-buttons' : '', "\">\n        ").concat(this.zoomInButton, "\n        <div class=\"iv-zoom-slider\">\n          <div class=\"iv-zoom-handle\"></div>\n        </div>\n        ").concat(this.zoomOutButton, "\n      </div>\n    </div>\n    <div class=\"iv-image-view\" >\n      <div class=\"iv-image-wrap\" ></div>\n    </div>\n  ");
+      return "\n\t\t\t<div class=\"iv-loader\"></div>\n\t\t\t<div class=\"iv-snap-view\">\n\t\t\t<div class=\"iv-snap-image-wrap\">\n\t\t\t\t<div class=\"iv-snap-handle\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"iv-zoom-actions ".concat(this._options.hasZoomButtons ? 'iv-zoom-actions--has-buttons' : '', "\">\n\t\t\t\t").concat(this.zoomInButton, "\n\t\t\t\t<div class=\"iv-zoom-slider\">\n\t\t\t\t<div class=\"iv-zoom-handle\"></div>\n\t\t\t\t</div>\n\t\t\t\t").concat(this.zoomOutButton, "\n\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"iv-image-view\" >\n\t\t\t<div class=\"iv-image-wrap\" ></div>\n\t\t\t</div>\n\t\t");
     }
   }, {
     key: "_findContainerAndImageSrc",
@@ -1223,11 +1223,13 @@ var ImageViewer = /*#__PURE__*/function () {
         // this._calculateDimensions();
       };
 
-      if (imageLoaded(hiResImage)) {
-        onHighResImageLoad();
-      } else {
-        this._events.hiResImageLoad = assignEvent(hiResImage, 'load', onHighResImageLoad);
-      }
+      setTimeout(function () {
+        if (imageLoaded(hiResImage)) {
+          onHighResImageLoad();
+        } else {
+          _this10._events.hiResImageLoad = assignEvent(hiResImage, 'load', onHighResImageLoad);
+        }
+      }, 0);
     }
   }, {
     key: "_calculateDimensions",

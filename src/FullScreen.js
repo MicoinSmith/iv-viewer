@@ -7,68 +7,68 @@ const fullScreenHtml = `
 `;
 
 class FullScreenViewer extends ImageViewer {
-  constructor (options = {}) {
-    const fullScreenElem = createElement({
-      tagName: 'div',
-      className: 'iv-fullscreen',
-      html: fullScreenHtml,
-      parent: document.body,
-    });
+	constructor (options = {}) {
+		const fullScreenElem = createElement({
+			tagName: 'div',
+			className: 'iv-fullscreen',
+			html: fullScreenHtml,
+			parent: document.body,
+		});
 
-    const container = fullScreenElem.querySelector('.iv-fullscreen-container');
+		const container = fullScreenElem.querySelector('.iv-fullscreen-container');
 
-    // call the ImageViewer constructor
-    super(container, { ...options, refreshOnResize: false });
+		// call the ImageViewer constructor
+		super(container, { ...options, refreshOnResize: false });
 
-    // add fullScreenElem on element list
-    this._elements.fullScreen = fullScreenElem;
+		// add fullScreenElem on element list
+		this._elements.fullScreen = fullScreenElem;
 
-    this._initFullScreenEvents();
-  }
-  _initFullScreenEvents () {
-    const { fullScreen } = this._elements;
-    const closeBtn = fullScreen.querySelector('.iv-fullscreen-close');
+		this._initFullScreenEvents();
+	}
+	_initFullScreenEvents () {
+		const { fullScreen } = this._elements;
+		const closeBtn = fullScreen.querySelector('.iv-fullscreen-close');
 
-    // add close button event
-    this._events.onCloseBtnClick = assignEvent(closeBtn, 'click', this.hide);
-  }
-  show (imageSrc, hiResImageSrc) {
-    // show the element
-    css(this._elements.fullScreen, { display: 'block' });
+		// add close button event
+		this._events.onCloseBtnClick = assignEvent(closeBtn, 'click', this.hide);
+	}
+	show (imageSrc, hiResImageSrc) {
+		// show the element
+		css(this._elements.fullScreen, { display: 'block' });
 
-    // if image source is provide load image source
-    if (imageSrc) {
-      this.load(imageSrc, hiResImageSrc);
-    }
+		// if image source is provide load image source
+		if (imageSrc) {
+			this.load(imageSrc, hiResImageSrc);
+		}
 
-    // handle window resize
-    this._events.onWindowResize = assignEvent(window, 'resize', this.refresh);
+		// handle window resize
+		this._events.onWindowResize = assignEvent(window, 'resize', this.refresh);
 
-    // disable scroll on html
-    css(document.querySelector('html'), { overflow: 'hidden' });
-  }
+		// disable scroll on html
+		css(document.querySelector('html'), { overflow: 'hidden' });
+	}
   hide = () => {
-    // hide the fullscreen
-    css(this._elements.fullScreen, { display: 'none' });
+  	// hide the fullscreen
+  	css(this._elements.fullScreen, { display: 'none' });
 
-    // enable scroll
-    removeCss(document.querySelector('html'), 'overflow');
+  	// enable scroll
+  	removeCss(document.querySelector('html'), 'overflow');
 
-    // remove window event
-    this._events.onWindowResize();
+  	// remove window event
+  	this._events.onWindowResize();
 
-    if (this._listeners.onHide) {
-      this._listeners.onHide();
-    }
+  	if (this._listeners.onHide) {
+  		this._listeners.onHide();
+  	}
   }
   destroy () {
-    const { fullScreen } = this._elements;
+  	const { fullScreen } = this._elements;
 
-    // destroy image viewer
-    super.destroy();
+  	// destroy image viewer
+  	super.destroy();
 
-    // remove the element
-    remove(fullScreen);
+  	// remove the element
+  	remove(fullScreen);
   }
 }
 
